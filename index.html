@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blink Tac Toe - Darban.ai Challenge</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Blink Tac Toe</h1>
+            <p>A twisted version of Tic Tac Toe with vanishing emojis!</p>
+        </header>
+
+        <div id="category-selection" class="screen active">
+            <h2>Choose Your Emoji Categories</h2>
+            
+            <div class="player-setup">
+                <div class="player-card">
+                    <h3>Player 1</h3>
+                    <div class="category-options">
+                        <button class="category-btn" data-player="1" data-category="animals">
+                            🐶 Animals
+                        </button>
+                        <button class="category-btn" data-player="1" data-category="food">
+                            🍕 Food
+                        </button>
+                        <button class="category-btn" data-player="1" data-category="sports">
+                            ⚽ Sports
+                        </button>
+                        <button class="category-btn" data-player="1" data-category="nature">
+                            🌸 Nature
+                        </button>
+                    </div>
+                    <div class="selected-category" id="player1-selected"></div>
+                </div>
+
+                <div class="player-card">
+                    <h3>Player 2</h3>
+                    <div class="category-options">
+                        <button class="category-btn" data-player="2" data-category="animals">
+                            🐶 Animals
+                        </button>
+                        <button class="category-btn" data-player="2" data-category="food">
+                            🍕 Food
+                        </button>
+                        <button class="category-btn" data-player="2" data-category="sports">
+                            ⚽ Sports
+                        </button>
+                        <button class="category-btn" data-player="2" data-category="nature">
+                            🌸 Nature
+                        </button>
+                    </div>
+                    <div class="selected-category" id="player2-selected"></div>
+                </div>
+            </div>
+
+            <button id="start-game" class="start-btn" disabled>Start Game</button>
+            <button id="show-help" class="help-btn">How to Play</button>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div class="game-info">
+                <div class="current-player">
+                    <span id="current-player-text">Player 1's Turn</span>
+                    <span id="current-emoji" class="current-emoji"></span>
+                </div>
+                
+                <div class="player-emojis">
+                    <div class="player-emoji-count">
+                        <span>Player 1:</span>
+                        <div id="player1-emojis" class="emoji-list"></div>
+                    </div>
+                    <div class="player-emoji-count">
+                        <span>Player 2:</span>
+                        <div id="player2-emojis" class="emoji-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-board" id="game-board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+
+            <div class="game-controls">
+                <button id="new-game" class="control-btn">New Game</button>
+                <button id="show-rules" class="control-btn">Rules</button>
+            </div>
+        </div>
+
+        <div id="help-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>How to Play Blink Tac Toe</h2>
+                
+                <div class="rules">
+                    <h3>🎯 Objective</h3>
+                    <p>Be the first player to get 3 of your emojis in a row (horizontally, vertically, or diagonally).</p>
+                    
+                    <h3>🎮 Game Setup</h3>
+                    <ul>
+                        <li>Each player chooses an emoji category</li>
+                        <li>Players take turns placing emojis on the 3×3 grid</li>
+                        <li>Each turn, you get a random emoji from your chosen category</li>
+                    </ul>
+                    
+                    <h3>✨ The Vanishing Rule</h3>
+                    <ul>
+                        <li>Each player can have only <strong>3 emojis</strong> on the board at any time</li>
+                        <li>When you place your 4th emoji, your <strong>oldest emoji disappears</strong></li>
+                        <li>You cannot place your 4th emoji where your 1st emoji was</li>
+                        <li>This creates dynamic gameplay where the board constantly changes!</li>
+                    </ul>
+                    
+                    <h3>🏆 Winning</h3>
+                    <p>Get 3 of your emojis in a line before your opponent. The game continues until someone wins - draws are impossible!</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="win-modal" class="modal">
+            <div class="modal-content win-content">
+                <h2 id="winner-text">Player 1 Wins! 🎉</h2>
+                <div id="winning-line" class="winning-emojis"></div>
+                <button id="play-again" class="play-again-btn">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
